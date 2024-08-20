@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
+import { GrLogout } from "react-icons/gr";
 
 const LoggedInPage: React.FC = () => {
   const authContext = useContext(AuthContext);
@@ -15,14 +16,14 @@ const LoggedInPage: React.FC = () => {
   };
 
   return (
-    <div className={`container ${val ? `dark` : `light`}`}>
+    <div className={`container ${val ? "dark" : "light"}`}>
       <div>
         <h1>Welcome, {authContext.username}! You are logged in.</h1>
-        <button
-          className={`button ${val ? "Blight" : "Bdark"}`}
-          onClick={handleLogout}
-        >
-          Log Out
+        <div className="img">
+          <img src="homero.gif" alt="Avatar" className="img" />
+        </div>
+        <button className="buttonLogOuth" onClick={handleLogout}>
+          Log Out <GrLogout className="icon" />
         </button>
       </div>
     </div>

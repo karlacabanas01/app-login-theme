@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Login: React.FC = () => {
   const authContext = useContext(AuthContext);
@@ -17,13 +18,19 @@ const Login: React.FC = () => {
     if (loginSuccess) {
       setMessage("Login successful!");
     } else {
-      setMessage("Login failed: Incorrect username or password.");
+      setMessage("Incorrect username or password.");
     }
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
   };
 
   const handleRegister = async () => {
     if (!username || !password) {
       setMessage("Error: Both username and password fields are required.");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
       return;
     }
 
@@ -31,24 +38,27 @@ const Login: React.FC = () => {
     if (registerSuccess) {
       setMessage("Registration successful!");
     } else {
-      setMessage("Registration failed: Please try again.");
+      setMessage("Failed, please try again.");
     }
+
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
   };
 
   return (
-    <div className={`container ${val ? `dark` : `light`}`}>
+    <div className={`container ${val ? "dark" : "light"}`}>
       <button
-        className={`buttonSwitch ${val ? "Bdark" : "Blight"}`}
+        className={`buttonTheme ${val ? "Bdark" : "Blight"}`}
         type="button"
         onClick={(e) => {
           e.preventDefault();
-          setVal((prev) => {
-            return !prev;
-          });
+          setVal((prev) => !prev);
         }}
       >
-        Switch Theme
+        {val ? <FaMoon /> : <FaSun />}
       </button>
+
       <img src="login.webp" alt="logo" width={220} />
       <h1 className="title">{isRegistering ? "Register" : "Login"}</h1>
       <input
@@ -66,8 +76,6 @@ const Login: React.FC = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      {message && <p className="message">{message}</p>}
-
       {isRegistering ? (
         <button className="buttonRegister" onClick={handleRegister}>
           Register
@@ -77,6 +85,7 @@ const Login: React.FC = () => {
           Log In
         </button>
       )}
+      {message && <p className="message">{message}</p>}
       <button
         className={`buttonRegisterLogin`}
         type="button"
