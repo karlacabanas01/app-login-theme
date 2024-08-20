@@ -85,7 +85,17 @@ const Login: React.FC = () => {
           Log In
         </button>
       )}
-      {message && <p className="message">{message}</p>}
+
+      {message && (
+        <p
+          className={`message ${
+            message.includes("successful") ? "message-success" : "message-error"
+          }`}
+        >
+          {message}
+        </p>
+      )}
+
       <button
         className={`buttonRegisterLogin`}
         type="button"

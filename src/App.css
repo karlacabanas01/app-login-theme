@@ -174,12 +174,20 @@ code {
   background-color: #fce12c;
   color: #333333;
 }
+
 .message {
-  color: red;
   background-color: #eeeeee;
   margin: 1rem;
   padding: 0.8rem;
   font-size: 1.2rem;
   text-align: center;
   border-radius: 1rem;
+}
+
+.message-success {
+  color: green;
+}
+
+.message-error {
+  color: red;
 }

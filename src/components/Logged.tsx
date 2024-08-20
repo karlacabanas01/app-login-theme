@@ -12,7 +12,6 @@ const LoggedInPage: React.FC = () => {
   const handleLogout = () => {
     authContext.logout();
     setVal(true);
-    console.log("Tema claro", val);
   };
 
   return (
