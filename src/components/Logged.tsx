@@ -10,7 +10,7 @@ const LoggedInPage: React.FC = () => {
 
   const handleLogout = () => {
     authContext.logout();
-    setVal(true); // Cambiar a modo claro al desloguearse
+    setVal(true);
     console.log("Tema claro", val);
   };
 
